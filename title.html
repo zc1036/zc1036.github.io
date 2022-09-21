@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>title</title>
+		<style>
+			.wrapper{
+				border: 1px solid blue;
+				margin-bottom:20px;
+				padding:10px;
+			}
+
+			.css-class-1{
+				padding:10px;
+				background-color:aqua;
+			}
+
+			.css-class-2{
+				padding:10px;
+				background-color:red;
+				border-radius:10px;
+				color: white;
+			}
+
+			.building-label {
+				font-size: 60px;
+				color: white;
+				font-weight: bold;
+				text-shadow: 0px 0px 3px black;
+				-webkit-text-stroke-width: 1px;
+    			-webkit-text-stroke-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+
+
+
+			<div style="position: relative">
+				<img style="position: absolute; top: 0px; left: 0px;" src="map.png"></img>
+				<div id="locationmarker" style="position: absolute; background-color: red; font-size: 50px; font-weight: bold; border-radius: 1em; width: 1em; height: 1em;"></div>
+				<div class="building-label" style="position: absolute; top: 500px; left: 560px;">
+					<div>#7</div>
+					<div>125-128</div>
+					<div>225-228</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 940px; left: 1800px;">
+					<div>#2</div>
+					<div>105-108</div>
+					<div>205-208</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 790px; left: 2010px;">
+					<div>#1</div>
+					<div>101-104</div>
+					<div>201-204</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 826px; left: 376px;">
+					<div>#6</div>
+					<div>121-124</div>
+					<div>221-224</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 950px; left: 800px;">
+					<div>#5</div>
+					<div>117-120</div>
+					<div>217-220</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 943px; left: 1136px;">
+					<div>#4</div>
+					<div>113-116</div>
+					<div>213-216</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 1260px; left: 1370px;">
+					<div>#3</div>
+					<div>109-112</div>
+					<div>209-212</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 540px; left: 890px;">
+					<div>#8</div>
+					<div>129-132</div>
+					<div>229-232</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 302px; left: 1173px;">
+					<div>#9</div>
+					<div>133-136</div>
+					<div>233-236</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 550px; left: 1550px;">
+					<div>#10</div>
+					<div>137-140</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 220px; left: 1900px;">
+					<div>#11</div>
+					<div>141-144</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 110px; left: 2240px;">
+					<div>#12</div>
+					<div>143-150</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 110px; left: 2800px;">
+					<div>#13</div>
+					<div>151-158</div>
+				</div>
+				<div class="building-label" style="position: absolute; top: 400px; left: 2340px;">
+					<div>#14</div>
+					<div>159-164</div>
+				</div>
+			</div>
+			
+
+			<!--components-->
+			<div class="wrapper">
+				<h3>components</h3>
+				<test-component label="Label Text 1"></test-component>
+				<test-component label="Label Text 2"></test-component>
+			</div>
+
+			<!--looping-->
+			<div class="wrapper">
+				<h3>looping</h3>
+				<button @click="loopingMethod">Add another item</button>
+				<select>
+					<option :value="item.val" v-for="item in loopingData">{{item.text}}</option>
+				</select>
+			</div>
+
+			<!--html rendering-->
+			<div class="wrapper">
+				<h3>html rendering</h3>
+				<div v-html="htmlRenderingData"></div>
+			</div>
+
+			<!--two-way binding-->
+			<div class="wrapper">
+				<h3>two-way binding</h3>
+				<input type="text" v-model="twoWayBindingData">
+				<div>var "twoWayBindingData" = "{{twoWayBindingData}}"</div>
+				<button @click="twoWayBindingMethod">Add "9"</button>
+			</div>
+
+			<!--element visibility-->
+			<div class="wrapper">
+				<h3>element visibility</h3>
+				<button @click="elementVisibilityMethod">toggle</button>
+				<span v-if="elementVisibilityData">Can you see this?</span>
+			</div>
+
+			<!--computed properties-->
+			<div class="wrapper">
+				<h3>computed properties</h3>
+				<div>
+					<input v-model.number="computedPropertiesSlider1" type="range" min="0" max="50">
+					<span style="border:1px solid black;padding:5px">{{computedPropertiesSlider1}}</span>
+				</div>
+				<br>
+				<div>
+					<input v-model.number="computedPropertiesSlider2" type="range" min="0" max="50">
+					<span style="border:1px solid black;padding:5px">{{computedPropertiesSlider2}}</span>
+				</div>
+				<br>
+				<div>
+					<div>slider1 + slider 2</div>
+					<input :value="computedPropertiesSlider3" type="range" min="0" max="100" disabled>
+					<span style="border:1px solid black;padding:5px">{{computedPropertiesSlider3}}</span>
+				</div>
+			</div>
+
+			<!--slots-->
+			<div class="wrapper">
+				<h3>slots (in the component "slots-component", the built-in "&#x3C;slot/&#x3E;" or "&#x3C;slot&#x3E;&#x3C;/slot&#x3E;" tag determines where the html wrapped in the tag will be rendered)</h3>
+				<slots-component>
+					<div>SOME TEST HTML</div>
+				</slots-component>
+			</div>
+
+			<!--dynamic components-->
+			<div class="wrapper">
+				<h3>dynamic components (using the built-in "is" attribute you can determine which component is rendered via string value. this is often used for switching pages or tabs in navigation (if you build your "pages" as components).)</h3>
+				<button @click="dynamicComponentsToggle">toggle components</button>
+				<div :is="dynamicComponentsComputedProp" label="My Label"></div>
+			</div>
+
+			<!--css classes-->
+			<div class="wrapper">
+				<h3>css classes</h3>
+				<button @click="cssClassesToggle">toggle</button>
+				<div :class="cssClassesComputedProp">TEST TEXT</div>
+			</div>
+
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			// left:  30.274058, -97.715635
+			// top: 30.274841, -97.712373
+			// right: 30.274555, -97.711939
+			// bot: 30.273152, -97.713491
+
+			loctop = 30.274841
+			locbottom = 30.273152
+			locleft = -97.715635
+			locright = -97.711939
+
+			picheight = 1711
+			picwidth = 3233
+
+			function updatePosition() {
+				navigator.geolocation.getCurrentPosition((position) => {
+					div = document.getElementById('locationmarker')
+
+					position = { coords: { latitude: 30.273985, longitude: -97.714166 } }
+
+					console.log([ position.coords.latitude, position.coords.longitude ]);
+
+					var newlat = ((position.coords.latitude - locbottom) / (loctop - locbottom) * picheight) - (div.offsetWidth / 2)
+					var newlong = (picwidth - ((position.coords.longitude - locright) / (locleft - locright) * picwidth)) - (div.offsetHeight / 2)
+
+					console.log([ newlat, newlong ])
+
+					div.style.top = newlat.toString() + 'px'
+					div.style.left = newlong.toString() + 'px'
+
+					setTimeout(updatePosition, 100);
+				});
+			}
+
+			navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+				if (result.state === 'granted' || result.state === 'prompt') {
+					updatePosition();
+				}
+
+				console.log(result.state)
+			});
+
+			Vue.component('test-component', {
+				template: `
+					<div>
+						<span>{{label}}: {{counter}}</span>
+						<button @click="incrementCounter">Click Me</button>
+					</div>`,
+				data(){
+					return {
+						counter: 0
+					};
+				},
+				props: [
+					'label'
+				],
+				methods: {
+					incrementCounter(){
+						this.counter++;
+					}
+				}
+			});
+
+			Vue.component('slots-component', {
+				template: `
+					<div style="border:5px solid red">
+						<slot/>
+					</div>`
+			});
+
+			Vue.component('dynamic-component', {
+				template: '<div style="border:5px solid green">dynamic-component-1</div>'
+			});
+
+			let VueMain = new Vue({
+				el: '#app',
+				data(){
+					return {
+						loopingData: [
+							{text: 'item1', val: 1},
+							{text: 'item2', val: 2},
+							{text: 'item3', val: 3}
+						],
+						htmlRenderingData: '<p style="color:red">Some HTML Text</p>',
+						twoWayBindingData: 'type text here',
+						elementVisibilityData: true,
+						computedPropertiesSlider1: 0,
+						computedPropertiesSlider2: 0,
+						dynamicComponentData: true,
+						cssClassesData: true
+					};
+				},
+				created(){
+					//alert("'created' lifecycle hook executed");
+				},
+				methods:{
+					loopingMethod(){
+						this.loopingData.push({text: 'another item', val: 9999});
+					},
+					twoWayBindingMethod(){
+						this.twoWayBindingData += '9';
+					},
+					elementVisibilityMethod(){
+						this.elementVisibilityData = !this.elementVisibilityData;
+					},
+					dynamicComponentsToggle(){
+						this.dynamicComponentData = !this.dynamicComponentData;
+					},
+					cssClassesToggle(){
+						this.cssClassesData = !this.cssClassesData;
+					}
+				},
+				computed:{
+					computedPropertiesSlider3(){
+						return this.computedPropertiesSlider1 + this.computedPropertiesSlider2;
+					},
+					dynamicComponentsComputedProp(){
+						return (this.dynamicComponentData) ? 'dynamic-component' : 'test-component';
+					},
+					cssClassesComputedProp(){
+						return (this.cssClassesData) ? 'css-class-1' : 'css-class-2';
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
